@@ -1,41 +1,25 @@
 <h4 class="text-center">Login</h4>
-<form action="" class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
-  <div class="form-group">
-    <input
-      type="text"
-      name="usuario"
-      class="form-control"
-      placeholder="Nome do usuário"
-      [(ngModel)]="usuario"
-      #campoUsuario="ngModel"
-      required
-    />
-    <app-mensagem
-      mensagem="Usuário obrigatório"
-      *ngIf="campoUsuario.invalid && campoUsuario.touched"
-    ></app-mensagem>
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      name="senha"
-      class="form-control"
-      placeholder="senha"
-      [(ngModel)]="senha"
-      #campoSenha="ngModel"
-      required
-    />
-    <app-mensagem
-      mensagem="Senha obrigatória"
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-    ></app-mensagem>
-  </div>
 
-  <button
-    type="submit"
-    class="btn btn-primary btn-block"
-    [disabled]="loginForm.invalid"
-  >
-    Login
-  </button>
+<form (ngSubmit)="login()" #loginForm="ngForm">
+  <div class="mb-3">
+
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">@</span>
+      <input type="email" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="usuario" #campoUsuario="ngModel" required    >
+    </div>
+    <app-mensagem mensagem="Usuário obrigatório" *ngIf="campoUsuario.invalid && campoUsuario.touched"></app-mensagem>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password"  name="senha" class="form-control" id="exampleInputPassword1" [(ngModel)]="senha" #campoSenha="ngModel" required>
+    <app-mensagem mensagem="Senha obrigatória" *ngIf="campoSenha.invalid && campoSenha.touched"></app-mensagem>
+  </div>
+  <!-- <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> -->
+  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
 </form>
